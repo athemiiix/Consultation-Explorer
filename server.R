@@ -30,11 +30,13 @@ parse_date_time(qualtrics$StartDate, c("%Y-%m-%d"))
 #tomatoes <- tbl(db, "tomatoes")
 
 # Join tables, filtering out those with <10 reviews, and select specified columns
-#qualtrics <- #inner_join(omdb, tomatoes, by = "ID") %>%
- # filter(qualtrics$ongoing_consult >= 10) %>%
-  #select(ID, overallimpactlogical, StartDate, EndDate, 
-   #      dept, indig, ongoing_consult, planned_consult, 
-    #     completed_consult, missed_consult, Q9, EndDate)
+#qualtrics <- filter(qualtrics$ongoing_consult >= 10) %>%
+ # select(ID, overallimpactlogical, StartDate, EndDate, 
+  #        dept, indig, ongoing_consult, planned_consult, 
+   #       completed_consult, missed_consult, indig_decision, EndDate)
+###ERROR IN UseMethod ("filter_")
+###no applicable method for 'filter_' applied to an object of class "logical"
+
 
 function(input, output, session) {
 
@@ -131,6 +133,3 @@ function(input, output, session) {
 
   output$n_qualtrics <- renderText({ nrow(qualtrics()) })
 }
-
-
-
